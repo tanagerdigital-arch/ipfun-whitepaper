@@ -1,308 +1,763 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>凡人修币录 S2 EP01 · 片尾字幕</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Noto+Serif+SC:wght@400;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>凡人修币录 — IP介绍书</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
+  :root {
+    --gold: #F0B90B;
+    --gold-light: #FFD54F;
+    --gold-dim: #8a6d0b;
+    --black: #0B0B0F;
+    --black-card: #111118;
+    --black-soft: #1a1a24;
+    --gray: #888;
+    --gray-light: #aaa;
+    --white: #f0ece4;
+    --purple: #7B4FFF;
+    --purple-dim: #5a3abf;
+    --red-accent: #ff4757;
+  }
 
-  .stage {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ---- NOISE OVERLAY ---- */
+  body::before {
+    content: '';
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #000;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    position: relative;
+    padding: 80px 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 120px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  .hero-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 900;
+    font-size: clamp(42px, 8vw, 72px);
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  .hero-title span {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--gray-light);
+    max-width: 520px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+  }
+
+  .hero-meta-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--gray);
+  }
+
+  .hero-meta-item strong {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ---- SECTIONS ---- */
+  section {
+    padding: 80px 0;
+    border-top: 1px solid rgba(240, 185, 11, 0.08);
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: var(--gray-light);
+  }
+
+  p strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ---- HIGHLIGHT BOX ---- */
+  .highlight-box {
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    background: linear-gradient(90deg, rgba(240,185,11,0.05), transparent);
+    margin: 32px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .highlight-box p {
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+
+  /* ---- CARDS GRID ---- */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .card {
+    background: var(--black-card);
+    border: 1px solid rgba(240,185,11,0.1);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color 0.3s;
+  }
+
+  .card:hover {
+    border-color: rgba(240,185,11,0.3);
+  }
+
+  .card-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ---- COLLAB TABLE ---- */
+  .collab-tier {
+    background: var(--black-card);
+    border: 1px solid rgba(240,185,11,0.1);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 16px;
+    position: relative;
     overflow: hidden;
   }
 
-  canvas {
+  .collab-tier::before {
+    content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .screen {
-    position: absolute;
-    width: 100%;
+    top: 0;
+    left: 0;
+    width: 4px;
     height: 100%;
+  }
+
+  .collab-tier.tier-gold::before { background: var(--gold); }
+  .collab-tier.tier-purple::before { background: var(--purple); }
+  .collab-tier.tier-silver::before { background: var(--gray); }
+
+  .tier-header {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .tier-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .tier-gold .tier-name { color: var(--gold); }
+  .tier-purple .tier-name { color: var(--purple); }
+  .tier-silver .tier-name { color: var(--gray); }
+
+  .tier-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+
+  .tier-gold .tier-tag { color: var(--gold); border-color: rgba(240,185,11,0.3); }
+  .tier-purple .tier-tag { color: var(--purple); border-color: rgba(123,79,255,0.3); }
+  .tier-silver .tier-tag { color: var(--gray); border-color: rgba(136,136,136,0.3); }
+
+  .tier-desc {
+    font-size: 14px;
+    color: var(--gray-light);
+    margin-bottom: 12px;
+  }
+
+  .tier-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tier-item {
+    font-size: 12px;
+    color: var(--white);
+    background: rgba(255,255,255,0.05);
+    padding: 5px 12px;
+    border-radius: 6px;
+  }
+
+  /* ---- WORLD SECTION ---- */
+  .world-map-placeholder {
+    background: var(--black-card);
+    border: 1px solid rgba(240,185,11,0.15);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .world-map-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(240,185,11,0.06), transparent 70%);
+  }
+
+  .map-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gold-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .map-locations {
+    display: flex;
     justify-content: center;
-    opacity: 0;
-    z-index: 1;
-    padding: 8vw;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .map-loc {
+    font-size: 13px;
+    color: var(--gray-light);
+    padding: 8px 16px;
+    border: 1px solid rgba(240,185,11,0.12);
+    border-radius: 8px;
+    background: rgba(240,185,11,0.03);
+  }
+
+  .map-loc.active {
+    border-color: rgba(240,185,11,0.4);
+    color: var(--gold);
+  }
+
+  .map-loc.locked {
+    border-color: rgba(255,255,255,0.05);
+    color: var(--gray);
+    font-style: italic;
+  }
+
+  /* ---- SEASON TIMELINE ---- */
+  .timeline {
+    position: relative;
+    margin: 32px 0;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(240,185,11,0.15);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--black);
+  }
+
+  .timeline-item.done::before {
+    background: var(--gold);
+  }
+
+  .timeline-item.current::before {
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(240,185,11,0.5);
+  }
+
+  .timeline-season {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--gold-dim);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  /* ---- TOKEN HINT ---- */
+  .token-hint {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--black-card);
+    border: 1px solid rgba(123,79,255,0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 32px 0;
+  }
+
+  .token-hint-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .token-hint-text {
+    font-size: 14px;
+    color: var(--gray-light);
+    margin-bottom: 0;
+  }
+
+  .token-hint-text strong {
+    color: var(--purple);
+    font-weight: 500;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    padding: 60px 0 40px;
+    border-top: 1px solid rgba(240,185,11,0.08);
     text-align: center;
   }
 
-  .divider {
-    width: 15vw;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(232,184,75,0.6), transparent);
-    margin: 5vh auto;
-  }
-
-  .s1-series {
+  .footer-title {
     font-family: 'Noto Serif SC', serif;
-    font-size: 9vw;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: 0.15em;
-    line-height: 1.3;
-    text-shadow: 0 0 8vw rgba(232,184,75,0.2);
-  }
-  .s1-season {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 3.5vw;
-    color: rgba(232,184,75,0.7);
-    letter-spacing: 0.2em;
-    margin-top: 3vh;
-  }
-  .s1-ep {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 4.5vw;
-    color: #E8B84B;
-    letter-spacing: 0.2em;
-    margin-top: 1.5vh;
-    text-shadow: 0 0 4vw rgba(232,184,75,0.4);
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 24px;
   }
 
-  .credit-block { width: 100%; margin-bottom: 4vh; }
-  .credit-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 2.8vw;
-    color: rgba(232,184,75,0.5);
-    letter-spacing: 0.3em;
-    margin-bottom: 1.5vh;
-  }
-  .credit-name {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 4.5vw;
-    color: #fff;
-    letter-spacing: 0.1em;
-    line-height: 1.8;
-  }
-  .credit-name.gold {
-    color: #E8B84B;
-    font-size: 6vw;
-    text-shadow: 0 0 6vw rgba(232,184,75,0.4);
+  .footer-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
   }
 
-  .social-handle {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 6vw;
-    color: #E8B84B;
-    letter-spacing: 0.1em;
-    margin-bottom: 2vh;
-    text-shadow: 0 0 4vw rgba(232,184,75,0.4);
-  }
-  .social-site {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 4vw;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.15em;
-    margin-bottom: 6vh;
-  }
-  .ep2-tag {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 4.5vw;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 0.2em;
-    padding: 2.5vw 8vw;
-    border: 1px solid rgba(232,184,75,0.35);
-    border-radius: 4px;
-    background: rgba(232,184,75,0.05);
+  .footer-contact {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--gray);
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
   }
 
-  .token-name {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 14vw;
-    color: #E8B84B;
-    letter-spacing: 0.2em;
-    text-shadow: 0 0 8vw rgba(232,184,75,0.5);
-    margin-bottom: 4vh;
-  }
-  .ca-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 2.8vw;
-    color: rgba(232,184,75,0.4);
-    letter-spacing: 0.3em;
-    margin-bottom: 2vh;
-  }
-  .ca-address {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 3.2vw;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 0.05em;
-    word-break: break-all;
-    line-height: 1.8;
-    padding: 0 4vw;
+  .footer-contact:hover {
+    border-color: var(--gold);
+    color: var(--gold);
   }
 
-  .hint {
-    position: fixed;
-    bottom: 6vh;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 3.5vw;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: 0.1em;
-    z-index: 99;
-    text-align: center;
-    cursor: pointer;
-    padding: 2.5vw 7vw;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 4px;
-    transition: opacity 0.5s;
-    white-space: nowrap;
+  .footer-copy {
+    font-size: 11px;
+    color: var(--gray);
+    opacity: 0.5;
   }
-  .hint:active { opacity: 0.5; }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 600px) {
+    .container { padding: 0 20px; }
+    .cards { grid-template-columns: 1fr; }
+    .hero-meta { gap: 16px; }
+    section { padding: 60px 0; }
+    .footer-contacts { flex-direction: column; align-items: center; }
+  }
+
+  /* ---- PRINT ---- */
+  @media print {
+    body { background: #fff; color: #111; }
+    body::before { display: none; }
+    .hero::after { display: none; }
+    p, .card-desc, .tier-desc, .timeline-desc { color: #444; }
+    .card, .collab-tier, .token-hint, .world-map-placeholder {
+      border-color: #ddd;
+      background: #fafafa;
+    }
+    .section-label, .hero-badge { color: #666; }
+  }
 </style>
 </head>
 <body>
-<div class="stage">
-  <canvas id="particles"></canvas>
 
-  <div class="screen" id="s1">
-    <div class="s1-series">凡人修币录</div>
-    <div class="s1-season">第二季 · 情绪之证</div>
-    <div class="s1-ep">EP01 · 天降神针</div>
-  </div>
+<div class="container">
 
-  <div class="screen" id="s2">
-    <div class="credit-block">
-      <div class="credit-label">出品</div>
-      <div class="credit-name gold">$币安小说</div>
-    </div>
-    <div class="divider"></div>
-    <div class="credit-block">
-      <div class="credit-label">总导演</div>
-      <div class="credit-name">@bianxiaoshuo</div>
-    </div>
-    <div class="credit-block">
-      <div class="credit-label">编剧</div>
-      <div class="credit-name">@bianxiaoshuo · @dastby001</div>
-    </div>
-    <div class="divider"></div>
-    <div class="credit-block">
-      <div class="credit-label">图片渲染</div>
-      <div class="credit-name">@hz_hann · @zoey0x<br>@dastby001 · @Meichin333333</div>
-    </div>
-    <div class="credit-block">
-      <div class="credit-label">视频制作</div>
-      <div class="credit-name">@dastby001 · @Meichin333333<br>@bianxiaoshuo</div>
+  <!-- ====== HERO ====== -->
+  <div class="hero">
+    <div class="hero-badge">Crypto Culture × Animated IP</div>
+    <h1 class="hero-title">
+      <span>凡人修币录</span><br>
+      IP 介绍书
+    </h1>
+    <p class="hero-subtitle">
+      加密文化领域第一部世界观驱动的动画短剧系列。<br>
+      将链上真实事件转化为沉浸式叙事，在娱乐中建立加密世界的文化共识。
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">格式 <strong>动画短剧</strong></div>
+      <div class="hero-meta-item">季度 <strong>S1已完结 · S2制作中</strong></div>
+      <div class="hero-meta-item">语言 <strong>中文 / 英文字幕</strong></div>
+      <div class="hero-meta-item">平台 <strong>YouTube · X · Telegram</strong></div>
     </div>
   </div>
 
-  <div class="screen" id="s3">
-    <div class="social-handle">@bianxiaoshuo</div>
-    <div class="social-site">bianxiaoshuo.com</div>
-    <div class="divider"></div>
-    <div class="ep2-tag">EP2 · 制作中</div>
+  <!-- ====== WHAT IS IT ====== -->
+  <section>
+    <div class="section-label">01 — 这是什么</div>
+    <h2 class="section-title">加密世界的原创叙事IP</h2>
+    <p>
+      《凡人修币录》是加密文化领域的原创IP，将加密行业中的真实文化、从业者群像和市场现象浓缩为一个虚构世界的故事。它不是市场分析，不是教学视频——它是<strong>故事</strong>。
+    </p>
+    <p>
+      这个IP包含<strong>多部短篇小说</strong>和一部<strong>动画短剧系列</strong>（当前核心产品）。小说构建了角色和世界观的基底；短剧则将它们视觉化、戏剧化，推向更广泛的受众。每一季短剧同步连载对应的小说，文字与影像互为补充。
+    </p>
+    <p>
+      故事发生在<strong>"永信城"</strong>——一座映射真实加密生态的虚拟城市。K线山是城市的精神象征与朝圣地标，光明顶聚集着交易所与机构的能量枢纽，Meme街流传着暴富和归零的传说，算法坊藏着量化交易的秘密。每个角色都对应一类真实的加密从业者——交易者、Builder、Dev、KOL、散户——他们的技能和道具全部源自加密文化。
+    </p>
+
+    <div class="highlight-box">
+      <p>独一份的定位：市面上有加密新闻、有交易工具、有Meme文化——但没有人把这些浓缩成一个有角色、有世界观、有连续剧情的叙事宇宙。《凡人修币录》填的是这个空白。</p>
+    </div>
+  </section>
+
+  <!-- ====== ORIGIN ====== -->
+  <section>
+    <div class="section-label">02 — 起源</div>
+    <h2 class="section-title">从一场比赛开始，由社区驱动生长</h2>
+    <p>
+      2026年2月，$币安小说社区基于原创小说《凡人修币录》中的角色与故事框架，为参加<strong>币安AI短剧比赛</strong>设计了全新人物与剧情，制作了第一季共6集短片。比赛结束后，社区共同决定将这个IP继续做下去——开启短剧的长期连载创作，并推出世界观全面扩展的S2。
+    </p>
+    <p>
+      这个IP不是自上而下规划出来的。它诞生于社区的创作热情，成长于真实的协作过程。<strong>社区共创</strong>从第一天起就写进了这个IP的基因。
+    </p>
+  </section>
+
+  <!-- ====== S1 SYNOPSIS ====== -->
+  <section>
+    <div class="section-label">03 — 第一季回顾</div>
+    <h2 class="section-title">S1 · FUD围城（6集 · 已完结）</h2>
+    <p>
+      男主<strong>赵凯斯</strong>，一名钻石手全职交易博主，拥有一种罕见的天赋——<strong>逆向感知</strong>：当他捕捉到某些市场信号时，能够预感到即将发生的事件。
+    </p>
+    <p>
+      K线山是永信城最具象征意义的地标。它既是每一个到访者必去的"朝圣地"，也是整个加密行业的精神高地。山顶的<strong>光明顶</strong>汇聚着各大交易所与机构，广场上的能量管道向全行业输送动力。然而在半山腰，一个名为<strong>FUD</strong>的暗铺正在酝酿阴谋——币圈黑公关势力企图摧毁整座山的信念根基。
+    </p>
+    <p>
+      赵凯斯凭借逆向感知察觉到了这场危机。他决定登上光明顶，阻止阴谋的发生。在光明顶之战中，他与客服小何通力配合，正面对抗FUD的攻势，同时联合无数散户，共同构建起了一条<strong>"信念共识线"</strong>——击退恐惧，守护建设。
+    </p>
+
+    <div class="highlight-box">
+      <p>S1主题：抛弃FUD，持续建设。一个关于普通人如何在恐惧与噪音中坚守信念的加密寓言。</p>
+    </div>
+  </section>
+
+  <!-- ====== S2 PREVIEW ====== -->
+  <section>
+    <div class="section-label">04 — 第二季预告</div>
+    <h2 class="section-title">S2 · 情绪之证（制作中）</h2>
+    <p>
+      《凡人修币录》的短剧系列以<strong>一季一个情绪</strong>为叙事锚点。S1聚焦<strong>FUD（恐惧）</strong>，S2聚焦<strong>FOMO（贪婪）</strong>——每一季独立探讨一种深刻影响加密社区的集体情绪。
+    </p>
+    <p>
+      世界观从S1的K线山光明顶单一场景，扩展至永信城的全貌——Meme街、算法坊、链下巷、清算广场逐一展开。原创小说中的核心角色全面进入短剧：原小说主角<strong>阿明</strong>在S2中加入主角团，与赵凯斯相识并肩作战；<strong>小猪女侠</strong>（陈晚照）、<strong>林牧</strong>等角色各自携带独立的故事线与人物弧光，在同一个世界中交汇碰撞。
+    </p>
+    <p>
+      S2还引入了一个全新角色群体——代表加密圈<strong>Builder与Dev</strong>的从业者，让角色图谱从交易者和散户延伸到真正的建设者。叙事机制上，暗池操纵、社交信号博弈、KOL数据分析等现实事件被编织进剧情，虚构与真实的边界进一步模糊。
+    </p>
+  </section>
+
+  <!-- ====== WHY IT MATTERS ====== -->
+  <section>
+    <div class="section-label">05 — 为什么值得关注</div>
+    <h2 class="section-title">加密圈有一万种工具，但还没有自己的故事IP</h2>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🧱</div>
+        <div class="card-title">品类唯一</div>
+        <p class="card-desc">加密行业有交易工具、有新闻媒体、有Meme文化，但没有人把从业者群像、行业事件和链上文化浓缩为一个有世界观、有连续剧情的叙事IP。凡人修币录是第一个。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎭</div>
+        <div class="card-title">叙事即传播</div>
+        <p class="card-desc">比起白皮书和线程，故事是更高效的共识工具。一个角色的命运比一张K线图更容易被记住、被转发、被讨论。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">天然跨文化</div>
+        <p class="card-desc">加密社区本身就是全球化的。动画是最不受语言限制的内容形式，配合多语字幕可以覆盖全球Crypto受众。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">实时性叙事</div>
+        <p class="card-desc">每一集都锚定真实热点（Meme币狂潮、暗池操纵、KOL崩塌），内容自带话题性和时效性，天然适合社交媒体传播。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WORLD ====== -->
+  <section>
+    <div class="section-label">06 — 世界观</div>
+    <h2 class="section-title">永信城 · Yongxin City</h2>
+    <p>
+      一座映射真实加密生态的虚拟城市。每个区域对应行业中的一个子文化或运行机制，角色在其间穿行、冲突、成长。世界观随剧集推进逐步解锁，为社区参与和IP扩展保留了充足空间。
+    </p>
+
+    <div class="world-map-placeholder">
+      <div class="map-label">永信城区域地图 · S2</div>
+      <div class="map-locations">
+        <div class="map-loc active">K线山·光明顶</div>
+        <div class="map-loc active">Meme街</div>
+        <div class="map-loc active">L3入口</div>
+        <div class="map-loc">算法坊</div>
+        <div class="map-loc">链下巷</div>
+        <div class="map-loc">创客园</div>
+        <div class="map-loc">清算广场</div>
+        <div class="map-loc locked">??? 社区共创区</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PROGRESS ====== -->
+  <section>
+    <div class="section-label">07 — 制作进度</div>
+    <h2 class="section-title">已走的路和接下来的路</h2>
+
+    <div class="timeline">
+      <div class="timeline-item done">
+        <div class="timeline-season">SEASON 1 · 2026.02</div>
+        <div class="timeline-title">FUD围城 · 6集 · 已完结</div>
+        <div class="timeline-desc">诞生于币安AI短剧比赛，社区基于原创小说共创全新人物与剧情。赵凯斯登上光明顶对抗FUD，联合散户构建信念共识线。验证了"加密叙事动画"的内容模型与社区共创机制。</div>
+      </div>
+      <div class="timeline-item current">
+        <div class="timeline-season">SEASON 2 · 制作中</div>
+        <div class="timeline-title">情绪之证</div>
+        <div class="timeline-desc">聚焦FOMO情绪。世界观从K线山扩展至永信城全貌，原小说主角阿明加入主角团，小猪女侠、林牧等IP角色全面入剧。新增Builder/Dev群体角色，引入暗池操纵、社交信号博弈等现实机制。EP1–EP3剧本定稿，EP4"粉色暗池"框架搭建中。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-season">SEASON 2+</div>
+        <div class="timeline-title">社区共创与IP扩展</div>
+        <div class="timeline-desc">S2完结后开放永信城社区区域设计大赛，邀请社区共建世界观。同步推进衍生内容（小说、游戏、短视频）。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== COLLAB ====== -->
+  <section>
+    <div class="section-label">08 — 合作方式</div>
+    <h2 class="section-title">品牌植入，不是贴片广告</h2>
+    <p>
+      我们不做片头15秒口播。我们做的是<strong>让品牌成为故事的一部分</strong>——植入世界观、融入角色行为、嵌入剧情逻辑。观众记住的不是广告，而是"永信城里那个好用的工具"。
+    </p>
+
+    <div class="collab-tier tier-gold">
+      <div class="tier-header">
+        <div class="tier-name">深度叙事植入</div>
+        <div class="tier-tag">旗舰合作</div>
+      </div>
+      <p class="tier-desc">品牌产品或服务作为剧情关键道具/场景出现，与角色命运直接关联。例如：某交易所成为角色在危机中的"逃生通道"；某钱包成为解锁剧情关键物品的工具。</p>
+      <div class="tier-items">
+        <span class="tier-item">定制剧情线</span>
+        <span class="tier-item">角色深度使用</span>
+        <span class="tier-item">专属衍生短片</span>
+        <span class="tier-item">社媒联合推广</span>
+      </div>
+    </div>
+
+    <div class="collab-tier tier-purple">
+      <div class="tier-header">
+        <div class="tier-name">世界观嵌入</div>
+        <div class="tier-tag">标准合作</div>
+      </div>
+      <p class="tier-desc">品牌作为永信城的"基础设施"自然存在。例如：Meme街的某个店铺、K线山上的某个训练工具、角色日常使用的某个App界面。出现频率高，但不强行推动剧情。</p>
+      <div class="tier-items">
+        <span class="tier-item">场景常驻植入</span>
+        <span class="tier-item">品牌视觉融合</span>
+        <span class="tier-item">多集持续曝光</span>
+      </div>
+    </div>
+
+    <div class="collab-tier tier-silver">
+      <div class="tier-header">
+        <div class="tier-name">联合推广</div>
+        <div class="tier-tag">灵活合作</div>
+      </div>
+      <p class="tier-desc">不涉及剧情植入，以IP授权和联合营销为主。例如：使用凡人修币录角色形象进行联名活动、合作Meme传播、社区AMA联动。</p>
+      <div class="tier-items">
+        <span class="tier-item">角色IP授权</span>
+        <span class="tier-item">联名活动</span>
+        <span class="tier-item">社区联动</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ECOSYSTEM HINT ====== -->
+  <section>
+    <div class="section-label">09 — 生态</div>
+    <h2 class="section-title">小说 × 短剧 × 游戏 × 社区</h2>
+    <p>
+      《凡人修币录》的IP结构不是单一产品，而是一个多形态的内容矩阵。底层是<strong>多部原创短篇小说</strong>，构建角色和世界观的基底（小猪女侠、林牧、阿明等角色均源自独立小说）。中层是<strong>动画短剧</strong>（当前核心产品），将小说IP视觉化、戏剧化。每一季短剧都同步推出对应的连载小说，文字与影像互为补充。
+    </p>
+    <p>
+      外层还包括互动游戏（算力修仙）和社区共创内容。赞助合作不限于动画——品牌可以出现在小说章节、游戏场景、甚至社区创作指南中，实现<strong>跨媒介、多触点</strong>的持续曝光。
+    </p>
+
+    <div class="token-hint">
+      <div class="token-hint-icon">🔗</div>
+      <p class="token-hint-text">
+        IP生态的链上锚点为 <strong>$币安小说</strong>（BSC），未来将探索代币与内容消费、创作激励、IP权益的深度结合。
+      </p>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT ====== -->
+  <div class="footer">
+    <h2 class="footer-title">让我们聊聊</h2>
+    <div class="footer-contacts">
+      <a class="footer-contact" href="https://x.com/bianxiaoshuo" target="_blank">X @bianxiaoshuo</a>
+      <a class="footer-contact" href="https://t.me/bianxiaoshuo" target="_blank">Telegram @bianxiaoshuo</a>
+      <a class="footer-contact" href="https://youtube.com/@bianxiaoshuo" target="_blank">YouTube @bianxiaoshuo</a>
+      <a class="footer-contact" href="https://bianxiaoshuo.com" target="_blank">bianxiaoshuo.com</a>
+    </div>
+    <div class="footer-copy">© 2024–2026 凡人修币录 · 币安小说 · All rights reserved.</div>
   </div>
 
-  <div class="screen" id="s4">
-    <div class="token-name">$BAXS</div>
-    <div class="ca-label">CONTRACT ADDRESS</div>
-    <div class="ca-address">0x7a1f2c923fc0d6c05f40f58e55999dcc88784444</div>
-  </div>
-
-  <div class="hint" id="hint" onclick="startCredits()">
-    ▶ 点击开始 · 请先开启录屏
-  </div>
 </div>
 
-<script>
-(function() {
-  var canvas = document.getElementById('particles');
-  var ctx = canvas.getContext('2d');
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  var particles = [];
-  for (var i = 0; i < 60; i++) {
-    particles.push({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      size: Math.random() * 1.5 + 0.3,
-      speedY: -(Math.random() * 0.4 + 0.15),
-      speedX: (Math.random() - 0.5) * 0.2,
-      opacity: Math.random() * 0.4 + 0.1,
-    });
-  }
-  function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(function(p) {
-      p.x += p.speedX;
-      p.y += p.speedY;
-      if (p.y < -5) { p.x = Math.random() * canvas.width; p.y = canvas.height; }
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(232,184,75,' + p.opacity + ')';
-      ctx.fill();
-    });
-    requestAnimationFrame(animateParticles);
-  }
-  animateParticles();
-})();
-
-function fadeIn(el, dur, cb) {
-  var s = Date.now();
-  el.style.opacity = 0;
-  var t = setInterval(function() {
-    var p = (Date.now()-s)/dur;
-    if (p>=1) { el.style.opacity=1; clearInterval(t); if(cb) cb(); }
-    else { el.style.opacity=p; }
-  }, 16);
-}
-
-function fadeOut(el, dur, cb) {
-  var s = Date.now();
-  var t = setInterval(function() {
-    var p = (Date.now()-s)/dur;
-    if (p>=1) { el.style.opacity=0; clearInterval(t); if(cb) cb(); }
-    else { el.style.opacity=1-p; }
-  }, 16);
-}
-
-function showScreen(id, fi, hold, fo, cb) {
-  var el = document.getElementById(id);
-  fadeIn(el, fi, function() {
-    setTimeout(function() { fadeOut(el, fo, cb); }, hold);
-  });
-}
-
-function startCredits() {
-  var hint = document.getElementById('hint');
-  hint.style.opacity = '0';
-  setTimeout(function() { hint.style.display='none'; }, 500);
-
-  showScreen('s1', 800, 3000, 800, function() {
-    setTimeout(function() {
-      showScreen('s2', 1000, 8000, 1000, function() {
-        setTimeout(function() {
-          showScreen('s3', 800, 4000, 800, function() {
-            setTimeout(function() {
-              showScreen('s4', 800, 3000, 800, null);
-            }, 200);
-          });
-        }, 200);
-      });
-    }, 200);
-  });
-}
-</script>
 </body>
 </html>
