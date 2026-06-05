@@ -460,11 +460,15 @@
   }
 
   .season-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--line-soft);
     background: rgba(255,255,255,0.035);
     border-radius: 8px;
     padding: 24px;
     min-height: 380px;
+    overflow: hidden;
   }
 
   .season-card.s1 {
@@ -473,8 +477,10 @@
   }
 
   .season-card.s2 {
-    border-color: rgba(240,185,11,0.32);
-    background: rgba(240,185,11,0.055);
+    border-color: rgba(240,185,11,0.62);
+    background:
+      linear-gradient(180deg, rgba(240,185,11,0.14), rgba(240,185,11,0.045) 42%, rgba(255,255,255,0.025));
+    box-shadow: 0 0 0 1px rgba(240,185,11,0.12), 0 26px 70px rgba(240,185,11,0.08);
   }
 
   .season-card.s3 {
@@ -525,6 +531,18 @@
   .season-card p {
     color: var(--muted);
     font-size: 14px;
+  }
+
+  .season-focus {
+    margin: auto -24px -24px;
+    padding: 12px 24px;
+    background: var(--gold);
+    color: #111;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
   }
 
   .world {
@@ -632,6 +650,42 @@
     color: var(--muted);
     font-size: 14px;
     margin-bottom: 16px;
+  }
+
+  .video-hint {
+    color: var(--dim);
+    font-size: 12px;
+    margin: -6px 0 14px;
+  }
+
+  .list-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-color: rgba(240,185,11,0.52);
+    background: rgba(240,185,11,0.1);
+    color: var(--gold-2);
+    box-shadow: 0 0 0 1px rgba(240,185,11,0.08), 0 14px 34px rgba(240,185,11,0.08);
+  }
+
+  .list-link::after {
+    content: "↗";
+    display: inline-grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #101014;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .list-link:hover {
+    border-color: rgba(255,215,106,0.78);
+    color: var(--gold-2);
+    background: rgba(240,185,11,0.16);
   }
 
   .world-gallery {
@@ -927,6 +981,15 @@
     overflow: hidden;
   }
 
+  a.video-placeholder {
+    color: inherit;
+    cursor: pointer;
+  }
+
+  a.video-placeholder:hover .play-mark {
+    transform: scale(1.06);
+  }
+
   .video-placeholder img {
     position: absolute;
     inset: 0;
@@ -960,6 +1023,7 @@
     font-size: 28px;
     line-height: 1;
     padding-left: 4px;
+    transition: transform 0.2s ease;
   }
 
   .case-body,
@@ -1306,6 +1370,7 @@
             <div class="season-emotion">核心情绪：FOMO（贪婪、收割、信任）</div>
             <p><strong>72小时逃生 · 情绪工厂里找到出口。</strong></p>
             <p>一个72小时的逃生副本。主角团被困在以Meme交易为隐喻的“情绪牛马工厂”（L3），必须在倒计时内找到情绪的出口。S2探讨了情绪交易的本质、FOMO如何被系统化利用、Meme trading中的真实玩法与操盘隐喻。世界观从K线山单一场景扩展至永信城全貌，原小说角色全面入剧。</p>
+            <div class="season-focus">Now Producing · Season 2 · 6 Episodes</div>
           </article>
 
           <article class="season-card s3">
@@ -1333,13 +1398,13 @@
 
         <div class="world-video">
           <div class="video-frame">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLVV0lBPNLgFsEr_05Wj3y2_qV0nA9vvrm" title="凡人修币录世界观视频系列" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/_3tU_8t52TQ" title="凡人修币录世界观代表视频" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
           <div class="world-video-copy">
             <div class="package-type">WORLDVIEW VIDEO SERIES</div>
             <h3>世界观不是静态设定，而是连续展开的内容宇宙</h3>
             <p>通过竖屏漫剧、概念短片和社区共创内容，持续呈现永信城的城市气质、角色行动和 Web3 圈层情绪。品牌合作可以从角色、道具、街区或任务进入这个世界。</p>
-            <a class="button secondary" href="https://youtube.com/playlist?list=PLVV0lBPNLgFsEr_05Wj3y2_qV0nA9vvrm" target="_blank">观看世界观系列</a>
+            <a class="button secondary list-link" href="https://youtube.com/playlist?list=PLVV0lBPNLgFsEr_05Wj3y2_qV0nA9vvrm" target="_blank">观看世界观完整系列</a>
           </div>
         </div>
 
@@ -1417,13 +1482,14 @@
 
         <div class="world-video">
           <div class="video-frame">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLVV0lBPNLgFssIDw3PaWW1JPd54X4K1Ix" title="凡人修币录角色介绍视频系列" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/QOTe7afWAB4" title="凡人修币录角色介绍代表视频" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
           <div class="world-video-copy">
             <div class="package-type">CHARACTER VIDEO SERIES</div>
             <h3>角色介绍视频系列</h3>
             <p>每个角色都对应一种真实的 Web3 人群与情绪：交易者、内容创作者、开发者、持币者、普通人、散户。</p>
-            <a class="button secondary" href="https://youtube.com/playlist?list=PLVV0lBPNLgFssIDw3PaWW1JPd54X4K1Ix" target="_blank">观看角色介绍系列</a>
+            <div class="video-hint">点击播放器右上角列表图标，或直接打开完整播放列表连续观看。</div>
+            <a class="button secondary list-link" href="https://youtube.com/playlist?list=PLVV0lBPNLgFssIDw3PaWW1JPd54X4K1Ix" target="_blank">打开完整角色播放列表</a>
           </div>
         </div>
 
@@ -1550,10 +1616,10 @@
         <div class="pricing-showcase">
           <article class="case-card">
             <div class="case-visual">
-              <div class="video-placeholder">
+              <a class="video-placeholder" href="https://youtu.be/OcpxsjroIhY" target="_blank" aria-label="观看品牌短片样例">
                 <img src="assets/brand-okx.png" alt="OKX Onchain OS 品牌短片封面">
                 <div class="play-mark">▶</div>
-              </div>
+              </a>
             </div>
             <div class="case-body">
               <div class="package-type">REFERENCE CASE</div>
@@ -1563,7 +1629,7 @@
                 <span class="pill">角色出演</span>
                 <span class="pill">品牌概念转译</span>
                 <span class="pill">社区共创</span>
-                <span class="pill">可替换为真实短片</span>
+                <a class="button secondary list-link" href="https://youtube.com/playlist?list=PLVV0lBPNLgFu26aa7cRtducnhSTVIYHzc" target="_blank">观看完整列表</a>
               </div>
             </div>
           </article>
